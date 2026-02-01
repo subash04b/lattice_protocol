@@ -1,0 +1,7 @@
+# Security Policy
+
+## Reporting a Vulnerability
+The Lattice Protocol handles the most sensitive reasoning data on earth. If you find a way to break Law II (Preservation) or Law IV (Immutability), please report it to: security@lattice-protocol.org.
+
+## Supported Versions
+We currently only support and certify implementations following the **v1.0.0 Genesis Specification**.
