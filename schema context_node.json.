@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lattice ContextNode v1.0",
+  "type": "object",
+  "properties": {
+    "node_id": { "type": "string", "format": "uuid" },
+    "altitude": { "type": "integer", "minimum": 0 },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "anchored_terms": { "type": "array", "items": { "type": "string" } },
+        "claims": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "properties": {
+        "hash": { "type": "string" },
+        "parent_hash": { "type": "string" }
+      }
+    }
+  },
+  "required": ["node_id", "altitude", "payload", "integrity"]
+}
