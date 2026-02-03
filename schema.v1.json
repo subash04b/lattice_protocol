@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lattice ContextNode Schema v1",
+  "type": "object",
+  "required": [
+    "id",
+    "parent_id",
+    "meta",
+    "epistemic_payload",
+    "content",
+    "digest",
+    "timestamps"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "UUID v4"
+    },
+    "parent_id": {
+      "type": ["string", "null"]
+    },
+    "meta": {
+      "type": "object",
+      "required": ["altitude", "origin_trigger", "status"],
+      "properties": {
+        "altitude": { "type": "integer", "minimum": 0 },
+        "origin_trigger": {
+          "type": "string",
+          "enum": [
+            "scope_shift",
+            "constraint_mutation",
+            "clarification",
+            "conflict_detection"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "FOLDED",
+            "CONFLICT",
+            "PENDING_MERGE",
+            "MERGED",
+            "ARCHIVED"
+          ]
+        }
+      }
+    },
+    "epistemic_payload": {
+      "type": "object",
+      "required": ["anchored_terms", "claims", "constraints"],
+      "properties": {
+        "anchored_terms": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "claims": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "content": {
+      "type": "string"
+    },
+    "digest": {
+      "type": "string"
+    },
+    "timestamps": {
+      "type": "object",
+      "required": ["created_at", "last_touched"],
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "last_touched": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
